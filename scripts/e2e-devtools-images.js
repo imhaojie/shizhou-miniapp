@@ -69,7 +69,7 @@ async function main() {
         { path: '/assets/images/default-wallpaper-2.jpg', width: 900, height: 1600 },
         { path: '/assets/images/default-wallpaper-3.jpg', width: 900, height: 1600 },
         { path: '/assets/images/default-wallpaper-4.jpg', width: 900, height: 1600 },
-        { path: '/QRcode.png', width: 439, height: 600 }
+        { path: '/QRcode.jpg', width: 548, height: 811 }
       ]
       const results = []
       for (const asset of assets) {

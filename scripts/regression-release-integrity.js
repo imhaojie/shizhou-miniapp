@@ -62,7 +62,7 @@ function checkRoutesAndAssets() {
     ...walk(path.join(root, 'pages'), (file) => /\.(js|json|wxml|wxss)$/.test(file)),
     ...walk(path.join(root, 'utils'), (file) => file.endsWith('.js'))
   ]
-  const assetPattern = /\/(?:assets\/[A-Za-z0-9_./-]+\.(?:png|jpe?g|gif|webp|svg|bmp)|QRcode\.png)/gi
+  const assetPattern = /\/(?:assets\/[A-Za-z0-9_./-]+\.(?:png|jpe?g|gif|webp|svg|bmp)|QRcode\.(?:png|jpe?g))/gi
   for (const file of packageSourceFiles) {
     const text = fs.readFileSync(file, 'utf8')
     let match = null
@@ -115,9 +115,9 @@ function checkPackagingAndQr() {
   for (const folder of ['cloudfunctions', 'docs', 'samples', 'scripts', 'tmp']) {
     assert(ignored.has(`folder:${folder}`), `${folder} must not be included in the mini program package`)
   }
-  const qrPath = path.join(root, 'QRcode.png')
+  const qrPath = path.join(root, 'QRcode.jpg')
   assert(fs.existsSync(qrPath) && fs.statSync(qrPath).size > 1024, 'Customer-service QR image is missing or empty')
-  assert(!ignored.has('file:QRcode.png'), 'Customer-service QR image is excluded from upload')
+  assert(!ignored.has('file:QRcode.jpg'), 'Customer-service QR image is excluded from upload')
 
   const mediaExtensions = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.mp3', '.wav', '.m4a'])
   const packageMediaRoots = ['assets', 'pages', 'components', 'custom-tab-bar']
